@@ -1,0 +1,58 @@
+.guest-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  background: #eef1f5;
+}
+
+.guest-login-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 24px;
+  background: #2f4368;
+  color: #ffffff;
+  font-size: 13.5px;
+  flex-shrink: 0;
+}
+
+.guest-login-banner-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.guest-login-banner-actions button {
+  padding: 6px 16px;
+  border-radius: 8px;
+  border: none;
+  background: #ffffff;
+  color: #2f4368;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.guest-login-banner-actions button.secondary {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.guest-login-banner-actions button:hover {
+  opacity: 0.9;
+}
+
+.guest-page .chat-container {
+  flex: 1;
+  min-height: 0;
+}
+
+@media (max-width: 640px) {
+  .guest-login-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

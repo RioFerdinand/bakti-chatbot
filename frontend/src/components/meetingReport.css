@@ -1,0 +1,208 @@
+.report-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 20, 35, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.report-modal {
+  width: 100%;
+  max-width: 560px;
+  max-height: 85vh;
+  overflow-y: auto;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+.report-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.report-header h3 {
+  font-size: 16px;
+  color: #1b2a4b;
+  margin: 0;
+}
+
+.report-close {
+  border: none;
+  background: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #6b7280;
+}
+
+.report-textarea {
+  width: 100%;
+  border: 1px solid #dbe1ea;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 13.5px;
+  resize: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.report-upload-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.report-upload-btn {
+  flex: 1;
+  display: block;
+  text-align: center;
+  padding: 10px 6px;
+  border: 1.5px dashed #a9b4c7;
+  border-radius: 10px;
+  background-color: #f5f7fa;
+  color: #1b2a4b;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.report-upload-btn:hover {
+  background-color: #e9edf3;
+}
+
+.report-upload-hint {
+  font-size: 11.5px;
+  color: #6b7280;
+  margin: 0 0 10px;
+}
+
+.report-textarea:focus {
+  border-color: #3f5771;
+}
+
+.report-generate-btn {
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background-color: #1b2a4b;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.report-generate-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.report-generate-btn:hover:not(:disabled) {
+  background-color: #2c3e63;
+}
+
+.report-error {
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: #fdecea;
+  color: #b3261e;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.report-result {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.report-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #6b7280;
+  letter-spacing: 0.04em;
+}
+
+.report-result p,
+.report-result ul {
+  margin: 4px 0 0;
+  font-size: 13.5px;
+  color: #1f2937;
+}
+
+.report-result ul {
+  padding-left: 18px;
+}
+
+.report-download-btn {
+  display: block;
+  text-align: center;
+  padding: 12px;
+  border-radius: 10px;
+  background-color: #1b2a4b;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.report-download-btn:hover {
+  background-color: #2c3e63;
+}
+
+.report-reset-btn {
+  border: none;
+  background: none;
+  color: #3f5771;
+  font-size: 12.5px;
+  text-decoration: underline;
+  cursor: pointer;
+  align-self: center;
+}
+
+.report-history {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #e2e6ee;
+}
+
+.report-history ul {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 140px;
+  overflow-y: auto;
+}
+
+.report-history li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 13px;
+  color: #1f2937;
+}
+
+.report-history li span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.report-history li a {
+  flex-shrink: 0;
+  color: #1b2a4b;
+  font-weight: 600;
+  font-size: 12.5px;
+  text-decoration: underline;
+}

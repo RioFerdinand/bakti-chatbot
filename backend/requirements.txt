@@ -1,0 +1,17 @@
+fastapi
+uvicorn[standard]
+pydantic
+langchain
+langchain-community
+langchain-ollama
+langchain-text-splitters
+langchain-core
+chromadb
+pypdf
+bcrypt
+python-multipart
+fpdf2
+python-docx
+pytesseract
+Pillow
+docx2pdf

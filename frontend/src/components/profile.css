@@ -1,0 +1,72 @@
+.profile-overlay{
+    position:fixed;
+    inset:0;
+    background:transparent;
+}
+
+.profile-card{
+    position:absolute;
+    bottom:80px;
+    left:20px;
+
+    width:260px;
+
+    background:#2f3c52;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    color:white;
+
+    z-index:100;
+}
+
+.profile-avatar{
+
+    width:80px;
+    height:80px;
+
+    border-radius:50%;
+
+    background:white;
+
+    color:#b33a3a;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:35px;
+
+    margin:auto;
+}
+
+.profile-card h3{
+    text-align:center;
+    margin-top:15px;
+}
+
+.profile-card p{
+    text-align:center;
+    opacity:.8;
+}
+
+.logout-btn{
+
+    width:100%;
+
+    margin-top:25px;
+
+    background:#b64040;
+
+    color:white;
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:12px;
+
+    cursor:pointer;
+}

@@ -1,0 +1,592 @@
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+
+}
+.container{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: #eef1f5;
+}
+
+.sidebar{
+    width: 300px;
+    height: 100vh;
+    background: #2f4368;
+    color: white;
+    flex-shrink: 0;
+}
+
+/* ================= CHAT CONTAINER ================= */
+
+.chat-container{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    background:#fff;
+}
+
+/* ================= HEADER ================= */
+
+.chat-header{
+    height:75px;
+    display:flex;
+    align-items:center;
+    padding:0 30px;
+    border-bottom:1px solid #e5e5e5;
+    background:#fff;
+}
+
+.chat-header .logo{
+    width:150px;
+    height:auto;
+    object-fit:contain;
+}
+
+.chat-header h2{
+    margin-left:8px;
+    font-size:26px;
+    color:#b54d4d;
+    font-weight:600;
+}
+
+/* ================= BODY WRAPPER (tidak ikut scroll) ================= */
+
+.chat-body-wrapper{
+    flex:1;
+    position:relative;
+    overflow:hidden;
+
+    display:flex;
+    flex-direction:column;
+}
+
+/* ================= BODY (area yang bisa di-scroll) ================= */
+
+.chat-body{
+    flex:1;
+    overflow-y:auto;
+
+    display:flex;
+    flex-direction:column;
+
+    padding:30px;
+    gap: 16px;
+
+    position:relative;
+    z-index:1;
+}
+
+/* ================= WATERMARK ================= */
+
+.watermark{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:420px;
+    opacity:.12;
+    pointer-events:none;
+    z-index:0;
+}
+
+/* ================= MESSAGE BUBBLE ================= */
+
+.message-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  max-width: 75%;
+}
+ 
+.message-row.bot {
+  align-self: flex-start;
+}
+ 
+.message-row.user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+ 
+.avatar {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 50%;
+  background-color: #f8dde0;
+  color: #b03a4d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+ 
+.message-user.bubble {
+  padding: 18px 20px;
+}
+
+.avatar.bot {
+  background-color: #1b2a4b;
+  color: #ffffff;
+}
+
+.avatar.user {
+  background-color: #f8dde0;
+  color: #b03a4d;
+}
+ 
+.message-bubble {
+  padding: 14px 18px;
+  border-radius: 14px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+ 
+.message-bubble.bot {
+  background-color: #1b2a4b;
+  color: #ffffff;
+  border-bottom-left-radius: 4px;
+}
+ 
+.message-bubble.user {
+  background-color: #3f5771;
+  color: #ffffff;
+  border-bottom-right-radius: 4px;
+}
+ 
+
+.message-bubble.loading {
+  opacity: 0.7;
+  font-style: italic;
+}
+
+/* ===== BARU: kolom pembungkus bubble + footer (tanggal & ikon aksi) ===== */
+.message-row {
+  position: relative;
+}
+
+.message-col {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.message-row.user .message-col {
+  align-items: flex-end;
+}
+
+.message-row.bot .message-col {
+  align-items: flex-start;
+}
+
+/* Footer minimalis di LUAR bubble: tanggal + ikon salin/edit, muncul saat hover */
+.message-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+  padding: 0 4px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.message-row:hover .message-footer {
+  opacity: 1;
+}
+
+.message-timestamp {
+  font-size: 11px;
+  color: #9aa1ab;
+  white-space: nowrap;
+}
+
+.message-icons {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.message-icon-btn {
+  width: 26px;
+  height: 26px;
+  border: none;
+  background-color: transparent;
+  color: #9aa1ab;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.message-icon-btn:hover {
+  background-color: #eef1f5;
+  color: #3f5771;
+}
+
+/* ===== BARU: kartu status (pengganti emoji ✅/⚠️ polos di dalam bubble) ===== */
+.status-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.status-icon {
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-card.success .status-icon {
+  background-color: rgba(52, 199, 89, 0.18);
+  color: #4ade80;
+}
+
+.status-card.error .status-icon {
+  background-color: rgba(251, 191, 36, 0.18);
+  color: #fbbf24;
+}
+
+.status-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding-top: 5px;
+  min-width: 0;
+}
+
+.status-text {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.status-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background-color: #ffffff;
+  color: #1b2a4b;
+  font-weight: 600;
+  font-size: 13.5px;
+  padding: 9px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.05s ease;
+}
+
+.status-download-btn:hover {
+  background-color: #e8edf5;
+}
+
+.status-download-btn:active {
+  transform: scale(0.97);
+}
+
+/* ===== BARU: kartu pilihan format export (Word / PDF) ===== */
+.export-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.export-choice-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  padding: 10px 16px 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.05s ease;
+}
+
+.export-choice-btn:hover {
+  background-color: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.export-choice-btn:active {
+  transform: scale(0.97);
+}
+
+.export-choice-icon {
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.export-choice-icon.word {
+  background-color: rgba(65, 126, 219, 0.22);
+  color: #7fb0f2;
+}
+
+.export-choice-icon.pdf {
+  background-color: rgba(224, 82, 82, 0.2);
+  color: #f19191;
+}
+
+.export-choice-label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.25;
+}
+
+.export-choice-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.export-choice-subtitle {
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ===== BARU: kotak edit pesan (textarea inline) ===== */
+.message-edit-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 220px;
+}
+
+.message-edit-textarea {
+  width: 100%;
+  min-height: 60px;
+  resize: vertical;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.12);
+  color: inherit;
+  font-family: inherit;
+  font-size: 14.5px;
+  padding: 10px 12px;
+  outline: none;
+}
+
+.message-edit-textarea:focus {
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.message-edit-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.message-edit-btn {
+  border: none;
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.message-edit-btn.save {
+  background-color: #ffffff;
+  color: #1b2a4b;
+  font-weight: 600;
+}
+
+.message-edit-btn.save:hover {
+  background-color: #e8edf5;
+}
+
+.message-edit-btn.cancel {
+  background-color: transparent;
+  color: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.message-edit-btn.cancel:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ===== Chat Input ===== */
+.chat-input {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 32px;
+  background-color: #ffffff;
+  border-top: 1px solid #e2e6ee;
+}
+ 
+.chat-input input {
+  flex: 1;
+  padding: 14px 20px;
+  border: 1px solid #dbe1ea;
+  border-radius: 24px;
+  background-color: #f5f7fa;
+  font-size: 14px;
+  outline: none;
+}
+ 
+.chat-input input:focus {
+  border-color: #3f5771;
+}
+ 
+.chat-input button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background-color: #1b2a4b;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+ 
+.chat-input button:hover {
+  background-color: #2c3e63;
+}
+ 
+/* ===== Chat Input Wrapper (input + preview lampiran) ===== */
+.chat-input-wrapper {
+  background-color: #ffffff;
+  border-top: 1px solid #e2e6ee;
+}
+
+.chat-input-wrapper .chat-input {
+  border-top: none;
+}
+
+/* ===== Preview lampiran sebelum dikirim ===== */
+.attachment-preview {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 32px 0 32px;
+}
+
+.attachment-thumb {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #dbe1ea;
+}
+
+.attachment-file-chip {
+  padding: 8px 14px;
+  border-radius: 8px;
+  background-color: #f5f7fa;
+  border: 1px solid #dbe1ea;
+  font-size: 13px;
+  color: #3f5771;
+}
+
+.attachment-remove-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: none;
+  background-color: #eef1f5;
+  color: #3f5771;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.attachment-remove-btn:hover {
+  background-color: #e2e6ee;
+}
+
+/* ===== Tombol ikon (kamera & lampirkan file) ===== */
+.chat-input .icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid #dbe1ea;
+  background-color: #f5f7fa;
+  color: #3f5771;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.chat-input .icon-btn:hover {
+  background-color: #e8edf5;
+}
+
+.chat-input .icon-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===== FIX: gambar/file di dalam bubble chat (dulu tidak ada aturan ukuran
+   sama sekali, sehingga gambar tampil pada ukuran asli/raksasa) ===== */
+.message-bubble {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.message-image {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  object-fit: cover;
+}
+
+.message-file-chip {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.15);
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+/* ===== Scrollbar (optional polish) ===== */
+
+.body::-webkit-scrollbar,
+.sidebar ul::-webkit-scrollbar {
+  width: 6px;
+}
+ 
+.body::-webkit-scrollbar-thumb,
+.sidebar ul::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+/* ===== Empty state (belum ada chat dipilih) ===== */
+.empty-state {
+  text-align: center;
+  color: #8a8f98;
+  margin-top: 40px;
+  padding: 0 24px;
+}
+
+.chat-input input:disabled,
+.chat-input button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
