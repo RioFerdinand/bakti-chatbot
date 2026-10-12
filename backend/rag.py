@@ -7,7 +7,7 @@ from typing import List
 
 from langchain_chroma import Chroma
 from langchain_ollama import OllamaEmbeddings
-from langchain.schema import Document
+from langchain_core.documents import Document
 
 from config import CHROMA_DIR, EMBEDDING_MODEL, OLLAMA_HOST
 

@@ -77,7 +77,7 @@ def reindex_all():
     return {"chunks_indexed": jumlah}
 
 
-@app.post("/chat", response_model=ChatResponse)
+@app.post("/chat/guest", response_model=ChatResponse)
 def chat(req: ChatRequest):
     """Ajukan pertanyaan ke chatbot RAG."""
     if not req.question.strip():
